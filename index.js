@@ -15,8 +15,10 @@ const Product = require('./Models/product');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.get('/dog', (req, res) => {
-    res.send("WOOF!");
+app.get('/products', async (req, res) => {
+    const allProducts = await Product.find({});
+    res.render('products/index', { allProducts });
+
 })
 app.listen(3000, () => {
     console.log("APP IS LISTENING ON PORT 3000");
