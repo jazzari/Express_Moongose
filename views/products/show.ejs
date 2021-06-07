@@ -14,6 +14,21 @@
     </ul>
     <a href="/products">All Products</a>
     <a href="/products/<%= product._id %>/edit">Edit Product</a>
+
+    <form action="/products/<%= product._id %>?_method=DELETE " method="POST">
+        <button>Delete</button>
+    </form>
+
+    <script>
+        const form = document.querySelector("form");
+       
+        form.addEventListener("submit", function(e) {
+          let answer = confirm("Do you want to delete?");
+          if(!answer) {
+            e.preventDefault();
+          }
+        })
+      </script>
     
 </body>
 </html>
